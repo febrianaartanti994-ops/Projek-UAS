@@ -37,7 +37,7 @@ void registerUser(User &user)
 
 void savedata(User &user)
 {
-    ofstream file("user_data.txt");
+    ofstream file("user_data.txt", ios::app);
     if (file.is_open())
     {
         file << user.username << "\n";
