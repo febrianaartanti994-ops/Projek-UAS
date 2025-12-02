@@ -8,11 +8,11 @@ struct  User
 {
     string username;
     string password;
-    string forgotpasword;
+    string forgotpassword;
     string usernameInput;
     string passwordInput;
     char choice;
-    char pilihan;
+    
 };
 
 void registerUser(User &user)
@@ -54,10 +54,15 @@ void savedata(User &user)
 void forgotPassword(User &user)
 {
     cout << "\n====Forgot Password====\n";
-    cout << "Enter new password: ";
-    cin >> user.forgotpasword;
-    user.password = user.forgotpasword;
-    cout << "Password reset successful! Your new password is: " << user.forgotpasword << "\n";
+      do {
+        cout << "Enter 10 character password: \n";
+        cin >> user.forgotpassword;
+        if (user.forgotpassword.length() != 10)
+            cout << "Password must be exactly 10 characters!\n";
+    } while (user.forgotpassword.length() != 10);
+
+    user.password = user.forgotpassword;
+    cout << "Password reset successful! Your new password is: " << user.forgotpassword << "\n";
 }
 
 void loginUser(User &user)
