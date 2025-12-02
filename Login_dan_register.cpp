@@ -20,7 +20,8 @@ void registerUser(User &user)
     cout << "\n====Register====\n";
 
         cout << "Enter username: ";
-        std::getline(cin, user.username);
+        cin.ignore();
+        getline(cin, user.username);
 
     do {
         cout << "Enter 10 character password: \n";
