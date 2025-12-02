@@ -69,25 +69,34 @@ void loginUser(User &user)
 {
     cout << "\n====Login====\n";
     ifstream file("user_data.txt");
-    if (file.is_open())
-    {
-        getline(file, user.username);
-        getline(file, user.password);
-        file.close();
-    }
-    else
+    if (!file.is_open())
     {
         cout << "Error loading user data. Please register first.\n";
         return;
     }
+
     cout << "Enter username: ";
     cin.ignore();
     getline(cin, user.usernameInput);
     cout << "Enter password: ";
     getline(cin, user.passwordInput);
-    if (user.usernameInput == user.username && user.passwordInput == user.password)
+
+    string fileUsername, filePassword;
+    bool found = false;
+
+    while (getline(file, fileUsername) && getline(file, filePassword))
     {
-        cout << "Login successful! Welcome, " << user.username << ".\n";
+        if (user.usernameInput == fileUsername && user.passwordInput == filePassword)
+        {
+            found = true;
+            break;
+        }
+    }
+    file.close();
+
+    if (found)
+    {
+        cout << "Login successful! Welcome, " << user.usernameInput << ".\n";
     }
     else
     {
