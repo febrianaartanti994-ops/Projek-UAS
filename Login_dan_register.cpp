@@ -72,7 +72,7 @@ void loginUser(User &user)
     if (file.is_open())
     {
         getline(file, user.username);
-        file >> user.password;
+        getline(file, user.password);
         file.close();
     }
     else
@@ -81,9 +81,10 @@ void loginUser(User &user)
         return;
     }
     cout << "Enter username: ";
-    cin >> user.usernameInput;
+    cin.ignore();
+    getline(cin, user.usernameInput);
     cout << "Enter password: ";
-    cin >> user.passwordInput;
+    getline(cin, user.passwordInput);
     if (user.usernameInput == user.username && user.passwordInput == user.password)
     {
         cout << "Login successful! Welcome, " << user.username << ".\n";
