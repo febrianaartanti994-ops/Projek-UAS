@@ -122,7 +122,7 @@ int main()
     }
     else if (choice == 3)
     {
-        cout << "Exiting program. Goodbye!\n";
+        cout << "Exiting program... Goodbye!\n";
     }
     else
     {
